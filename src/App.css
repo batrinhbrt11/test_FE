@@ -1,38 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+body {
+  background: #f5f5f5;
+}
 .App {
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-header p {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 150%;
+  color: #000000;
+}
+.button-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.button-list button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.estate-info-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 0 15px;
+  border-radius: 5px;
+
+  gap: 10px;
+}
+.info-header-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-header-item p {
+  width: 100%;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: rgba(0, 0, 0, 0.6);
+}
+.info-header-item span {
+  width: 100%;
+  text-align: center;
+  border-right: 1px solid #f2f2f2;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+.info-item:last-child span {
+  border-right: none;
+}
+.estate-content-info{
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.styled-tabs > .ant-tabs-nav {
+  width: 100% !important;
+  background: linear-gradient(270deg, #6fbeed 0%, #2c68b1 101.09%) ;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.styled-tabs > .ant-tabs-nav .ant-tabs-tab {
+  display: block ;
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.styled-tabs > .ant-tabs-nav > div:nth-of-type(1) {
+  display: unset !important;
+  width: 100% !important;
+}
+.styled-tabs > .ant-tabs-nav .ant-tabs-tab {
+  border-radius: 5px ;
+
+  font-style: normal ;
+  font-weight: 500 ;
+  font-size: 14px ;
+  line-height: 150% ;
+  color: #ffffff ;
+}
+.styled-tabs > .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
+  background-color: #fff ;
+  color: #6fbeed ;
+}
+.styled-tabs > .ant-tabs-nav .ant-tabs-ink-bar {
+  background: none ;
+}
+.estate-tab-items .ant-collapse-item{
+  border-radius: 12px !important;
+  border: 1px solid #E0E0E0;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.normal-text{
+
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+color: rgba(0, 0, 0, 0.7);
+
+}
+.address-table{
+  margin-top: 8px;
+  width: 100%;
+  table-layout: fixed;
+}
+.address-table th{
+  text-align: center;
+  background-color: #f4f4f472;
+}
+.address-table td{
+  width: 400px !important;
+  padding: 10px;
+  border-bottom:1px solid #F2F2F2;
+}
+.address-table td:first-child{
+border-right:1px solid #F2F2F2;
+}
+.address-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #F2F2F2;
+}
+.address-table th p{
+  width: 100%;
+  margin: 0;
+  border-right:1px solid #F2F2F2;
+}
+.address-table th{
+  padding: 10px 0;
+}
+.input-rows{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  width: 100%;
+}
+.ant-form-item{
+
+  margin-bottom: 0;
+}
+.mt-8{
+  margin-top: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-label-item-require::before{
+  display: inline-block;
+  margin-inline-end: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-family: SimSun,sans-serif;
+  line-height: 1;
+  content: "*";
 }
+.btn-add{
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row-reverse;
 }
+.land-tab .ant-tabs-tab{
+  border:none !important;
+}
+.land-tab .ant-tabs-tab:first-child button{
+  visibility: hidden;
+}
+.ant-tabs-nav-add{
 
-.App-link {
-  color: #61dafb;
+  color:  #2862AF !important;
+  
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.ant-tabs-tab-remove{
+  color: #ff4d4f !important;
+} 
