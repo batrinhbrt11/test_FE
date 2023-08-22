@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import {
   Col,
   Row,
@@ -7,11 +7,10 @@ import {
   Input,
   Select,
   Space,
-  Button,
   Tabs,
 } from "antd";
 import { StyledFormItem } from "./StyledComponent";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import FormList from "./FormList";
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 const initialItems = [
   {
@@ -102,6 +101,58 @@ interface DefaultTabLandProps {
   formListName: string;
 }
 function DefaultTabLand(props: DefaultTabLandProps) {
+  const items=[
+    {
+      name: "huongchinh",
+      label: "Hướng chính"
+  
+    },
+    {
+      name: "hinhdang",
+      label: "Hình dạng",
+      require:true
+    },
+    {
+      name: "somattien",
+      label: "Số mặt tiền/mặt thoáng",
+      require:true
+    },
+    {
+      name: "ktmt",
+      label: "Kích thước mặt tiền (m)",
+      require:true
+    },
+    {
+      name: "ktcd",
+      label: "Kích thước chiều dài (m)",
+      require:true
+    },
+    {
+      name: "dtkv",
+      label: "Diện tích khuôn viên (m2)",
+      require:true
+    },
+    {
+      name: "dtqh",
+      label: "Diện tích phù hợp quy hoạch (m2)",
+      require:true
+    },
+    {
+      name: "dtkqh",
+      label: "Diện tích không phù hợp quy hoạch (m2)",
+      require:true
+    },
+    {
+      name: "dtsdr",
+      label: "Diện tích sử dụng riêng (m2)",
+      require:true
+    },
+    {
+      name: "dtsdc",
+      label: "Diện tích sử dụng chung (m2)",
+      require:true
+    },
+  ]
   return (
     <Form.List name={props.formListName}>
       {(fields, { add, remove }) => (
@@ -362,286 +413,7 @@ function DefaultTabLand(props: DefaultTabLandProps) {
               </StyledFormItem>
             </Col>
           </Row>
-          <table className="address-table ">
-            <thead>
-              <tr>
-                <th style={{ width: "32%" }}>
-                  <p>Đặc điểm</p>
-                </th>
-                <th style={{ width: "32%" }}>
-                  <p>HSPL</p>
-                </th>
-                <th style={{ width: "4%" }}>
-                  <Button
-                    style={{ background: "#2862AF", color: "white" }}
-                    shape="circle"
-                    icon={<ArrowRightOutlined />}
-                    size="small"
-                  />
-                </th>
-                <th style={{ width: "32%" }}>
-                  <p>Thực tế</p>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Hướng chính</td>
-                <Form.List name="huongchinh">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item name="HSPL">
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item name="thucte">
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Hình dạng</td>
-                <Form.List name="hinhdang">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Số mặt tiền/mặt thoáng</td>
-                <Form.List name="somattien">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Kích thước mặt tiền (m)</td>
-                <Form.List name="kichthuocmattien">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Kích thước chiều dài (m)</td>
-                <Form.List name="kichthuocchieudai">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Diện tích khuôn viên (m2)</td>
-                <Form.List name="dientichkhuonvien">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Diện tích phù hợp quy hoạch (m2)</td>
-                <Form.List name="dientichphqh">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Diện tích không phù hợp quy hoạch (m2)</td>
-                <Form.List name="dientichkphqh">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Diện tích sử dụng riêng (m2)</td>
-                <Form.List name="dientichsdr">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-              <tr>
-                <td className="form-label-item-require">Diện tích sử dụng chung (m2)</td>
-                <Form.List name="dientichsdc">
-                  {(fields, { add, remove }) => (
-                    <>
-                      <td>
-                        <Form.Item
-                          name="HSPL"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="STB nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                      <td></td>
-                      <td>
-                        <Form.Item
-                          name="thucte"
-                          rules={[{ required: true, message: "" }]}
-                        >
-                          <Input placeholder="Hệ thống tự nhập và cho sửa" />
-                        </Form.Item>
-                      </td>
-                    </>
-                  )}
-                </Form.List>
-              </tr>
-            </tbody>
-          </table>
+          <FormList items={items}/>
         </div>
       )}
     </Form.List>

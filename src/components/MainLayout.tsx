@@ -21,6 +21,7 @@ interface buttonProps {
 }
 export default function MainLayout() {
   const [form] = Form.useForm();
+  
   const listButton: buttonProps[] = [
     {
       id: 1,
@@ -71,6 +72,7 @@ export default function MainLayout() {
   ];
   const handleFinish = (values: any) => {
     console.log(values);
+    form.resetFields();
   };
 
 
