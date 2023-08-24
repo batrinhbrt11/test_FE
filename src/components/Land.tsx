@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Col,
   Row,
@@ -8,9 +8,13 @@ import {
   Select,
   Space,
   Tabs,
+  Button,
 } from "antd";
 import { StyledFormItem } from "./StyledComponent";
 import FormList from "./FormList";
+import { tab } from "@testing-library/user-event/dist/tab";
+import TabPane from "antd/es/tabs/TabPane";
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 const initialItems = [
   {
@@ -19,14 +23,17 @@ const initialItems = [
     key: "1",
   },
 ];
-export default function Land() {
-  const [activeKey, setActiveKey] = useState(initialItems[0].key);
+
+type LandProps = {
+  setShow: (isShow: boolean) => void;
+};
+export default function Land(props: LandProps) {
   const [items, setItems] = useState(initialItems);
+  const [activeKey, setActiveKey] = useState(items.length.toString());
 
-  const onChange = (newActiveKey: string) => {
-    setActiveKey(newActiveKey);
-  };
-
+  useEffect(()=>{
+    console.log(activeKey)
+  },[activeKey])
   const add = () => {
     const tmp = Number(activeKey) + 1;
     const newActiveKey = tmp.toString();
@@ -41,7 +48,7 @@ export default function Land() {
   };
 
   const remove = (targetKey: TargetKey) => {
-    if(targetKey==="1"){
+    if (targetKey === "1") {
       return null;
     }
     let newActiveKey = activeKey;
@@ -63,37 +70,53 @@ export default function Land() {
     setActiveKey(newActiveKey);
   };
 
-  const onEdit = (
-    targetKey: React.MouseEvent | React.KeyboardEvent | string,
-    action: "add" | "remove"
-  ) => {
-    if (action === "add") {
-      add();
-    } else {
-      remove(targetKey);
-    }
-  };
+
   return (
     <div className="form-container">
       <Row className="mt-8">
         <Col>
           <Form.Item label="Hợp thửa" name="hopthua">
-            <Radio.Group>
-              <Radio value="1"> Có</Radio>
-              <Radio value="0"> Không </Radio>
+            <Radio.Group onChange={(e) => props.setShow(e.target.value)}>
+              <Radio value={true}> Có</Radio>
+              <Radio value={false}> Không </Radio>
             </Radio.Group>
           </Form.Item>
         </Col>
       </Row>
 
       <Tabs
-        type="editable-card"
-        onChange={onChange}
-        activeKey={activeKey}
-        onEdit={onEdit}
-        items={items}
         className="land-tab"
-      />
+      >
+        {items.map((item) => (
+          <TabPane
+            tab={
+              <div className="tab-title">
+                <p>{item.label}</p>
+                {item.key === "1" ? (
+                  <Button
+                    shape="circle"
+                    icon={<PlusOutlined />}
+                    size="small"
+                    style={{ backgroundColor: "#2862AF" }}
+                    onClick={add}
+                  />
+                ) : (
+                  <Button
+                    shape="circle"
+                    icon={<MinusOutlined />}
+                    size="small"
+                    style={{ backgroundColor: "#F25B60" }}
+                    onClick={(e) => remove(item.key)}
+                  />
+                )}
+              </div>
+            }
+            key={item.key}
+          >
+            {item.children}
+          </TabPane>
+        ))}
+      </Tabs>
     </div>
   );
 }
@@ -101,58 +124,57 @@ interface DefaultTabLandProps {
   formListName: string;
 }
 function DefaultTabLand(props: DefaultTabLandProps) {
-  const items=[
+  const items = [
     {
       name: "huongchinh",
-      label: "Hướng chính"
-  
+      label: "Hướng chính",
     },
     {
       name: "hinhdang",
       label: "Hình dạng",
-      require:true
+      require: true,
     },
     {
       name: "somattien",
       label: "Số mặt tiền/mặt thoáng",
-      require:true
+      require: true,
     },
     {
       name: "ktmt",
       label: "Kích thước mặt tiền (m)",
-      require:true
+      require: true,
     },
     {
       name: "ktcd",
       label: "Kích thước chiều dài (m)",
-      require:true
+      require: true,
     },
     {
       name: "dtkv",
       label: "Diện tích khuôn viên (m2)",
-      require:true
+      require: true,
     },
     {
       name: "dtqh",
       label: "Diện tích phù hợp quy hoạch (m2)",
-      require:true
+      require: true,
     },
     {
       name: "dtkqh",
       label: "Diện tích không phù hợp quy hoạch (m2)",
-      require:true
+      require: true,
     },
     {
       name: "dtsdr",
       label: "Diện tích sử dụng riêng (m2)",
-      require:true
+      require: true,
     },
     {
       name: "dtsdc",
       label: "Diện tích sử dụng chung (m2)",
-      require:true
+      require: true,
     },
-  ]
+  ];
   return (
     <Form.List name={props.formListName}>
       {(fields, { add, remove }) => (
@@ -413,7 +435,7 @@ function DefaultTabLand(props: DefaultTabLandProps) {
               </StyledFormItem>
             </Col>
           </Row>
-          <FormList items={items}/>
+          <FormList items={items} />
         </div>
       )}
     </Form.List>

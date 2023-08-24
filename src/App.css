@@ -184,14 +184,18 @@ border-right:1px solid #F2F2F2;
 .land-tab .ant-tabs-tab{
   border:none !important;
 }
-.land-tab .ant-tabs-tab:first-child button{
-  visibility: hidden;
-}
-.ant-tabs-nav-add{
 
-  color:  #2862AF !important;
-  
+.land-tab .tab-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
-.ant-tabs-tab-remove{
-  color: #ff4d4f !important;
-} 
+.land-tab .tab-title button {
+  color: white;
+
+}
+.land-tab .tab-title button span{
+  padding: 0;
+  margin-right: 0 !important;
+}

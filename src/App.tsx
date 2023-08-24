@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Layout } from "antd";
 import MainLayout from "./components/MainLayout";
+import Todo from "./components/Todo";
 
 const { Sider } = Layout;
 
@@ -20,6 +21,7 @@ function App() {
           <Sider style={siderStyle}></Sider>
           <Layout style={siderStyle}>
             <MainLayout />
+          
           </Layout>
         </Layout>
       </div>
